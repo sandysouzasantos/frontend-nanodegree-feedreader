@@ -43,24 +43,27 @@ $(function () {
      */
     describe('The Menu', function () {
 
+        var body = $('body'),
+            menuIcon = $('.menu-icon-link');
+
         /* This test verifies if the menu is hidden by default.
          */
         it('is hidden by default', function () {
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect(body.hasClass('menu-hidden')).toBe(true);
         });
 
         /* This test verifies if the menu changes visibility
          * when the menu icon is clicked.
          */
         it('changes visibility when the menu link is clicked', function () {
-            var currentClass = $('body').attr('class');
-            var expectedClass = ($('body').hasClass('menu-hidden')) ? '' : 'menu-hidden';
 
-            $('.menu-icon-link').click();
-            expect($('body').attr('class')).toBe(expectedClass);
+            var isHidden = body.hasClass('menu-hidden');
 
-            $('.menu-icon-link').click();
-            expect($('body').attr('class')).toBe(currentClass);
+            menuIcon.click();
+            expect(body.hasClass('menu-hidden')).not.toBe(isHidden);
+
+            menuIcon.click();
+            expect(body.hasClass('menu-hidden')).toBe(isHidden);
         });
 
     });
