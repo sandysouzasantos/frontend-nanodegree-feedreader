@@ -53,13 +53,14 @@ $(function () {
          * when the menu icon is clicked.
          */
         it('changes visibility when the menu link is clicked', function () {
+            var currentClass = $('body').attr('class');
             var expectedClass = ($('body').hasClass('menu-hidden')) ? '' : 'menu-hidden';
 
             $('.menu-icon-link').click();
             expect($('body').attr('class')).toBe(expectedClass);
 
             $('.menu-icon-link').click();
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect($('body').attr('class')).toBe(currentClass);
         });
 
     });
